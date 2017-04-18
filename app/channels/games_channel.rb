@@ -21,3 +21,5 @@ class GamesChannel < ApplicationCable::Channel
     ActionCable.server.broadcast 'games', message: 'Hello  World'
   end
 end
+
+# ActionCable.server.broadcast 'games:1', summary: { home_team: { runs: 4, hits: 4, errors: 1 }, away_team: { runs: 9, hits: 10, errors: 1 } }

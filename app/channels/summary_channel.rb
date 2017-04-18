@@ -8,3 +8,4 @@ class SummaryChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 end
+# ActionCable.server.broadcast 'summary', game: { id: 1, home: { runs: 4, hits: 4, errors: 1 }, away: { runs: 9, hits: 10, errors: 2 } }
