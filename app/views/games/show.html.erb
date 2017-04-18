@@ -1,3 +1,5 @@
+<div data-channel="games" data-game-id="<%= @game.id %>"></div>
+
 <p><%= link_to "Back to Games", games_path %></p>
 <h2><%= @game.started_at.to_s(:short) %> – <%= @game.home_team.name %> vs. <%= @game.away_team.name %></h2>
 <br>
@@ -7,15 +9,15 @@
       <tbody>
         <tr>
           <td><%= @game.home_team.name %> (<%= @game.is_winner? @game.home_team %>)</td>
-          <td><%= @game.home_team_runs %></td>
-          <td><%= @game.home_team_hits %></td>
-          <td><%= @game.home_team_errors %></td>
+          <td id="home-team-runs"><%= @game.home_team_runs %></td>
+          <td id="home-team-hits"><%= @game.home_team_hits %></td>
+          <td id="home-team-errors"><%= @game.home_team_errors %></td>
         </tr>
         <tr>
           <td><%= @game.away_team.name %> (<%= @game.is_winner? @game.away_team %>)</td>
-          <td><%= @game.away_team_runs %></td>
-          <td><%= @game.away_team_hits %></td>
-          <td><%= @game.away_team_errors %></td>
+          <td id="away-team-runs"><%= @game.away_team_runs %></td>
+          <td id="away-team-hits"><%= @game.away_team_hits %></td>
+          <td id="away-team-errors"><%= @game.away_team_errors %></td>
         </tr>
       </tbody>
     </table>
@@ -32,12 +34,12 @@
       <tbody>
         <tr>
           <% @game.innings.each do |inning| %>
-            <td><%= inning.home_team_runs || "-" %></td>
+            <td id="inning-<%= inning.number %>-home"><%= inning.home_team_runs || "-" %></td>
           <% end %>
         </tr>
         <tr>
           <% @game.innings.each do |inning| %>
-            <td><%= inning.away_team_runs.nil? ? (inning.home_team_runs.nil? ? "-" : "X") : inning.away_team_runs %></td>
+            <td id="inning-<%= inning.number %>-away"><%= inning.away_team_runs.nil? ? (inning.home_team_runs.nil? ? "-" : "X") : inning.away_team_runs %></td>
           <% end %>
         </tr>
     </table>
